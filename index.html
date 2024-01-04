@@ -12,11 +12,25 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f0f0f0;
+            background-color: #ffff;
+        }
+        #phaser-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+        @media only screen and (max-width: 600px) {
+            /* Styles for screens with a width of 600 pixels or less */
+            #phaser-container {
+                height: 50%;
+                right:20px;
+            }
         }
     </style>
 </head>
 <body>
+    <div id="phaser-container"></div>
     <script src="script.js"></script>
 </body>
 </html>

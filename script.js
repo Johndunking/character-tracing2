@@ -1,7 +1,7 @@
 const config = {
     type: Phaser.AUTO,
-    width: window.innerWidth,
-    height: window.innerHeight,
+    width: 550,
+    height: 600,
     scene: {
         preload: preload,
         create: create,
@@ -12,8 +12,10 @@ const config = {
         dragTimeThreshold: 10
     },
     scale: {
-        mode: Phaser.Scale.RESIZE,
-        autoCenter: Phaser.Scale.CENTER_BOTH
+        mode: Phaser.Scale.FIT,
+        autoCenter: Phaser.Scale.CENTER_BOTH,
+        parent: 'phaser-container',
+        expandParent: true,
     },
     backgroundColor: '#ffffff'
 };
@@ -29,15 +31,16 @@ let currentScene;
 
 
 const targetPoints = [
-    [{ x: 80, y: 460 }, { x: 320, y: 490 }, { x: 300, y: 300 }], // Targets for letter A
-    [{  x: 80, y: 150 }, {  x: 80, y: 150  }, {  x: 80, y: 250  }], // Targets for letter B
+    [{ x: 110, y: 460 }, { x: 430, y: 470 }, { x: 400, y: 330 }], // Targets for letter A
+    [{  x: 130, y: 470 }, {  x: 130, y: 280  }, {  x: 130, y: 470  }], // Targets for letter B
+    [{  x: 400, y: 420 }], // Targets for letter C
     // ... Define targets for other letters as needed
 ];
 
 function preload() {
     this.load.bitmapFont('rubik', '/rubik/rubik.png', '/rubik/rubik.xml');
     this.load.image('dragPoint', 'smile.png');
-    this.load.image('targetPoint', 'target.png'); // Replace 'target.png' with your target point image
+    this.load.image('targetPoint', 'target.png'); 
 }
 
 function create() {
@@ -55,7 +58,7 @@ function create() {
     for (let i = 0; i < letters.length; i++) {
         const letter = letters[i];
 
-        const letterSprite = this.add.bitmapText(config.width / 2, config.height / 2, 'rubik', letter, 500)
+        const letterSprite = this.add.bitmapText(config.width / 2, config.height / 2, 'rubik', letter, 600)
             .setOrigin(0.5)
             .setInteractive({ draggable: false })
             .setVisible(false);
@@ -67,6 +70,7 @@ function create() {
             // Add a target point image at the initial target point
             const targetPointImage = this.add.image(targetPoint.x, targetPoint.y, 'targetPoint')
                 .setScale(.2)
+                .setPosition(config.width / 1, config.height / 2)
                 .setVisible(false);
 
             const dragPoints = [];
@@ -117,7 +121,7 @@ function create() {
 
                 dragPoint.on('drag', function (pointer) {
                     // Draw a line from the previous point to the current point
-                    graphics.lineStyle(72, 0x000000, 1); // lineStyle(thickness, color, alpha)
+                    graphics.lineStyle(72, 0xFFFF00, 1); // lineStyle(thickness, color, alpha)
                     graphics.lineBetween(dragPoint.x, dragPoint.y, pointer.x, pointer.y);
 
                     // Update the drag point position
@@ -167,17 +171,18 @@ function checkAllTargetsTraced(targets) {
 
 const dragPointPositions = [
     [
-        { x: config.width / 2, y: config.height / 3.8 },
-        { x: config.width / 2, y: config.height / 3.8 },
-        { x: config.width / 4.4, y: config.height / 1.8 },
-        { x: config.width / 1, y: config.height / 1 }
+        { x: config.width / 2, y: config.height / 5 },
+        { x: config.width / 2, y: config.height / 5 },
+        { x: config.width / 4.4, y: config.height / 1.8 }
     ], // Drag point positions for letter A
     [
-        { x: config.width / 4, y: config.height / 3.8 },
-        { x: config.width / 4, y: config.height / 3.8 },
-        { x: config.width / 4.4, y: config.height / 1.8 },
-        { x: config.width / 1, y: config.height / 1 }
-    ], // Drag point positions for letter A
+        { x: config.width / 4, y: config.height / 5 },
+        { x: config.width / 4, y: config.height / 5 },
+        { x: config.width / 4.4, y: config.height / 2.0 }
+    ], // Drag point positions for letter B
+    [
+        { x: config.width / 1.3, y: config.height / 3 }
+    ], // Drag point positions for letter C
 
     // Add more arrays of positions for other letters as needed
 ];
