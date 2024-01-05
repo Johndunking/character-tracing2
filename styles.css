@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway+Dots&family=Rubik+Doodle+Shadow&family=Rubik+Doodle+Triangles&family=Rubik+Scribble&display=swap');
+
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffff;
+}
+#phaser-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.reset {
+    position:absolute;
+    justify-content: center;
+    margin-bottom: 550px;
+    text-align: center;
+    margin-top: 20px;
+}
+.reset-btn{
+    font-size: 20px;
+    border-radius: 50px;
+    padding: 10px;
+    font-family: 'Rubik doodle triangles', Rubik, serif;
+    background: linear-gradient(to right, rgba(255, 0, 0, 0.5), rgba(0, 255, 0, 0.5));
+    color: lightgreen;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+.landing-page{
+    text-align: center;
+    font-family: 'Rubik doodle triangles', Rubik, serif;
+    color: lightgreen;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+.welcome{
+    margin-bottom: 200px;
+}
+.reset-btn:hover {
+    transform: translateY(-10px); /* Change the background color on hover */
+    transition:0.3s;
+  }
+  .reset-btn:not(:hover) {
+    transform: translateY(0); /* Translate the button back to its original position when not hovering */
+    transition:0.3s;
+  }
+@media only screen and (max-width: 600px) {
+    /* Styles for screens with a width of 600 pixels or less */
+    #phaser-container {
+        height: 50%;
+        right:20px;
+    }
+}

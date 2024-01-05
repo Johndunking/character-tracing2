@@ -1,36 +1,18 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Letter Tracing Game</title>
-    <script src="https://cdn.jsdelivr.net/npm/phaser@3.24.1/dist/phaser.min.js"></script>
-    <style>
-        body {
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #ffff;
-        }
-        #phaser-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-        }
-        @media only screen and (max-width: 600px) {
-            /* Styles for screens with a width of 600 pixels or less */
-            #phaser-container {
-                height: 50%;
-                right:20px;
-            }
-        }
-    </style>
+    <title>Tracing Game</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
 </head>
 <body>
-    <div id="phaser-container"></div>
-    <script src="script.js"></script>
+    <div class="landing-page">
+        <h1 class="welcome">Welcome to the Tracing Game!</h1>
+        <button class='reset-btn' onclick="startGame('letters')">Start Tracing Letters</button>
+        <button class='reset-btn' onclick="startGame('numbers')">Start Tracing Numbers</button>
+    </div>
+    <script src="landing.js"></script>
 </body>
 </html>

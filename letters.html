@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letter Tracing Game</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.24.1/dist/phaser.min.js"></script>
+</head>
+<body> 
+    <div class="reset">
+        <button class='reset-btn' onclick="refreshPage()">Reset</button>
+    </div>
+    <div id="phaser-container"></div>
+    <script src="letters.js"></script>
+    <script>
+        function refreshPage() {
+            // Redirect to the landing page
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

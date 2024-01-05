@@ -1,3 +1,5 @@
+const urlParams = new URLSearchParams(window.location.search);
+const type = urlParams.get('type');
 const config = {
     type: Phaser.AUTO,
     width: 550,
@@ -28,8 +30,6 @@ let currentTargetIndex; // Declare currentTargetIndex globally
 let letters;
 let currentScene;
 
-
-
 const targetPoints = [
     [{ x: 110, y: 460 }, { x: 430, y: 470 }, { x: 400, y: 330 }], // Targets for letter A
     [{  x: 130, y: 470 }, {  x: 130, y: 280  }, {  x: 130, y: 470  }], // Targets for letter B
@@ -46,13 +46,17 @@ function preload() {
 function create() {
     let currentDragPointIndex = -1;
     currentTargetIndex = 0;
+    
 
     this.add.rectangle(0, 0, config.width, config.height, 0xffffff).setOrigin(0);
+    
 
-    letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+    letters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+
 
     // Create a graphics object for the tracing trail
     const graphics = this.add.graphics();
+    
     currentScene = this;
 
     for (let i = 0; i < letters.length; i++) {
@@ -281,16 +285,3 @@ function loadNextLetter(graphics) {
         console.log('All letters completed!');
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
