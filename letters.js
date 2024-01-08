@@ -33,9 +33,33 @@ let currentScene;
 
 
 const targetPoints = [
-    [{ x: 110, y: 460 }, { x: 430, y: 470 }, { x: 400, y: 330 }], // Targets for letter A
+    [{ x: 110, y: 460 }, { x: 430, y: 470 }, { x: 430, y: 330 }], // Targets for letter A
     [{  x: 130, y: 470 }, {  x: 130, y: 280  }, {  x: 130, y: 470  }], // Targets for letter B
     [{  x: 400, y: 420 }], // Targets for letter C
+    [{ x: 140, y: 460 }, { x: 140, y: 460 }], // Targets for letter D
+    [{ x: 150, y: 460 },{ x: 430, y: 120 }, { x: 430, y: 300 },{ x: 430, y: 470 }], // Targets for letter E
+    [{ x: 150, y: 460 },{ x: 430, y: 120 }, { x: 430, y: 300 }], // Targets for letter F
+    [{  x: 440, y: 340 },{ x: 450, y: 300 }], // Targets for letter G
+    [{ x: 130, y: 460 }, { x: 430, y: 470 }, { x: 430, y: 300 }], // Targets for letter H
+    [{ x: 270, y: 460 }], // Targets for letter I
+    [{ x: 430, y: 120 }, { x: 150, y: 400 }], // Targets for letter J
+    [{ x: 190, y: 460 }, { x: 430, y: 120 }, { x: 430, y: 470 }], // Targets for letter K
+    [{ x: 200, y: 460 }, { x: 430, y: 470 }], // Targets for letter L
+    [{ x: 130, y: 460 }, { x: 270, y: 370 }, { x: 430, y: 130 }, { x: 430, y: 470 }], // Targets for letter M
+    [{ x: 130, y: 460 }, { x: 430, y: 470 }, { x: 430, y: 120 } ], // Targets for letter N
+    [{  x: 300, y: 130 }], // Targets for letter O
+    [{  x: 130, y: 470 }, {  x: 130, y: 280  }], // Targets for letter P
+    [{  x: 300, y: 130 }, { x: 430, y: 500 }], // Targets for letter Q
+    [{  x: 130, y: 470 }, {  x: 130, y: 280  }, { x: 450, y: 480 }], // Targets for letter R
+    [{ x: 270, y: 300 }, { x: 130, y: 400 }], // Targets for letter S
+    [{ x: 430, y: 130 }, { x: 270, y: 460 } ], // Targets for letter T
+    [{ x: 430, y: 130 }], // Targets for letter U
+    [{ x: 270, y: 460 }, { x: 430, y: 130 }], // Targets for letter V
+    [{ x: 150, y: 460 }, { x: 270, y: 270 }, { x: 430, y: 470 }, { x: 430, y: 120 } ], // Targets for letter W
+    [{ x: 430, y: 470 },{ x: 130, y: 460 }], // Targets for letter X
+    [{ x: 280, y: 290 },{ x: 280, y: 290 },{ x: 270, y: 460 }], // Targets for letter Y
+    [{ x: 430, y: 130 }, { x: 130, y: 460 },{ x: 430, y: 460 }], // Targets for letter Z
+    
     // ... Define targets for other letters as needed
 ];
 
@@ -183,7 +207,7 @@ const dragPointPositions = [
     [
         { x: config.width / 2, y: config.height / 5 },
         { x: config.width / 2, y: config.height / 5 },
-        { x: config.width / 4.4, y: config.height / 1.8 }
+        { x: config.width / 4, y: config.height / 1.8 }
     ], // Drag point positions for letter A
     [
         { x: config.width / 4, y: config.height / 5 },
@@ -193,7 +217,108 @@ const dragPointPositions = [
     [
         { x: config.width / 1.3, y: config.height / 3 }
     ], // Drag point positions for letter C
-
+    [
+        {x: config.width / 4, y: config.height / 5},
+        {x: config.width / 4, y: config.height / 5}
+    ], // Drag point positions for letter D
+    [
+        {x: config.width / 4, y: config.height / 5},
+        {x: config.width / 4, y: config.height / 5},
+        { x: config.width / 4, y: config.height / 2},
+        { x: config.width / 4, y: config.height / 1.3}
+    ], // Drag point positions for letter E
+    [
+        {x: config.width / 4, y: config.height / 5},
+        {x: config.width / 4, y: config.height / 5},
+        { x: config.width / 4, y: config.height / 2}
+    ], // Drag point positions for letter F
+    [
+        { x: config.width / 1.3, y: config.height / 3 },
+        { x: config.width / 1.7, y: config.height / 2 }
+    ], // Drag point positions for letter G
+    [
+        {x: config.width / 4, y: config.height / 5},
+        {x: config.width / 1.3, y: config.height / 5},
+        { x: config.width / 4.8, y: config.height / 2 }
+    ], // Drag point positions for letter H
+    [
+        {x: config.width / 2, y: config.height / 5}
+    ], // Drag point positions for letter I
+    [
+        { x: config.width / 4, y: config.height / 5 },
+        {x: config.width / 1.4, y: config.height / 3.5 }
+    ], // Drag point positions for letter J
+    [
+        { x: config.width / 3, y: config.height / 5 },
+        { x: config.width / 3, y: config.height / 2.0 },
+        { x: config.width / 3, y: config.height / 2.0 }
+    ], // Drag point positions for letter K
+    [
+        {x: config.width / 3, y: config.height / 5},
+        {x: config.width / 3.8, y: config.height / 1.3}
+    ], // Drag point positions for letter L
+    [
+        {x: config.width / 4, y: config.height / 5},
+        {x: config.width / 4, y: config.height / 5},
+        {x: config.width / 2, y: config.height / 1.8},
+        {x: config.width / 1.3, y: config.height / 5}
+    ], // Drag point positions for letter M
+    [
+        {x: config.width / 4, y: config.height / 5},
+        {x: config.width / 4, y: config.height / 5},
+        {x: config.width / 1.3, y: config.height / 1.3}
+    ], // Drag point positions for letter N
+    [
+        { x: config.width / 2.5, y: config.height / 4.8 }
+    ], // Drag point positions for letter O
+    [
+        { x: config.width / 4, y: config.height / 5 },
+        { x: config.width / 4, y: config.height / 5 }
+    ], // Drag point positions for letter P
+    [
+        { x: config.width / 2.5, y: config.height / 4.8 },
+        { x: config.width / 1.8, y: config.height / 1.4 }
+    ], // Drag point positions for letter Q
+    [
+        { x: config.width / 4, y: config.height / 5 },
+        { x: config.width / 4, y: config.height / 5 },
+        { x: config.width / 1.8, y: config.height / 2 }
+    ], // Drag point positions for letter R
+    [
+        {x: config.width / 1.3, y: config.height / 3.3},
+        { x: config.width / 2.5, y: config.height / 2.2 }
+    ], // Drag point positions for letter S
+    [
+        { x: config.width / 4.2, y: config.height / 4.8  },
+        {x: config.width / 2, y: config.height / 4.2}
+    ], // Drag point positions for letter T
+    [
+        {x: config.width / 4, y: config.height / 5}
+    ], // Drag point positions for letter U
+    [
+        {x: config.width / 4, y: config.height / 5},
+        { x: config.width / 2, y: config.height / 1.3}
+    ], // Drag point positions for letter V
+    [
+        {x: config.width / 4, y: config.height / 5},
+        { x: config.width / 4, y: config.height / 1.3},
+        {x: config.width / 2, y: config.height / 2.2},
+        {x: config.width / 1.3, y: config.height / 1.3}
+    ], // Drag point positions for letter W
+    [
+        {x: config.width / 4, y: config.height / 5},
+        {x: config.width / 1.3, y: config.height / 5}
+    ], // Drag point positions for letter X
+    [
+        {x: config.width / 4, y: config.height / 5},
+        {x: config.width / 1.3, y: config.height / 5},
+        {x: config.width / 2, y: config.height / 2}
+    ], // Drag point positions for letter Y
+    [
+        { x: config.width / 4.2, y: config.height / 4.8 },
+        {x: config.width / 1.3, y: config.height / 5},
+        { x: config.width / 4.2, y: config.height / 1.3 }
+    ], // Drag point positions for letter Z
     // Add more arrays of positions for other letters as needed
 ];
     // Add more positions as needed];

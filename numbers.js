@@ -31,10 +31,18 @@ let letters;
 let currentScene;
 
 const targetPoints = [
-    [{ x: 110, y: 460 }, { x: 430, y: 470 }, { x: 400, y: 330 }], // Targets for letter A
-    [{  x: 130, y: 470 }, {  x: 130, y: 280  }, {  x: 130, y: 470  }], // Targets for letter B
-    [{  x: 400, y: 420 }], // Targets for letter C
-    // ... Define targets for other letters as needed
+    [{  x: 300, y: 130 }], // Targets for 0
+    [{ x: 350, y: 120 } ,{ x: 350, y: 460 }], // Targets for 1
+    [{ x: 130, y: 460 }, {  x: 400, y: 450 }], // Targets 2
+    [{ x: 220, y: 280 }, { x: 130, y: 420 }], // Targets 3
+    [{ x: 350, y: 460 }, { x: 130, y: 400 }, {  x: 430, y: 400 }], // Targets 4
+    [{ x: 170, y: 130 }, { x: 170, y: 300 }, { x: 130, y: 400 }], // Targets 5
+    [{  x: 260, y: 270 }], // Targets for 6
+    [{ x: 430, y: 130 }, { x: 230, y: 460 }], // Targets for 7
+    [{  x: 270, y: 130 }], // Targets for 8
+    [{ x: 230, y: 460 }, { x: 350, y: 360 } ], // Targets for 9
+
+    // ... Define targets for other numberss as needed
 ];
 
 function preload() {
@@ -66,6 +74,13 @@ function create() {
             .setOrigin(0.5)
             .setInteractive({ draggable: false })
             .setVisible(false);
+
+            function speakLetter(letters) {
+                // Use the Web Speech API to speak the current letter
+                const synth = window.speechSynthesis;
+                const utterance = new SpeechSynthesisUtterance(letters[currentLetterIndex]);
+                synth.speak(utterance);
+            }
 
         // Set initial target point for the letter
         const targetPoint = targetPoints[i] ? targetPoints[i][currentTargetIndex] : null;
@@ -141,6 +156,7 @@ function create() {
                             console.log('All targets for letter ' + letter + ' completed!');
                             // Move to the next letter
                             loadNextLetter(graphics);
+                            speakLetter(letters);
                         } else {
                             // Move to the next target for the current letter
                             loadNextTarget(targetPoints[i], targetPointImage, dragPoints);
@@ -154,6 +170,7 @@ function create() {
     }
 
     loadNextLetter(graphics);
+    speakLetter(letters);
     
 }
 
@@ -175,22 +192,47 @@ function checkAllTargetsTraced(targets) {
 
 const dragPointPositions = [
     [
-        { x: config.width / 2, y: config.height / 5 },
-        { x: config.width / 2, y: config.height / 5 },
-        { x: config.width / 4.4, y: config.height / 1.8 }
-    ], // Drag point positions for letter A
+        { x: config.width / 2.2, y: config.height / 4.8 }
+    ], // Drag point positions for 0
+    [
+        { x: config.width / 3.2, y: config.height / 2.5 },
+        {x: config.width / 1.6, y: config.height / 5}
+    ], // Drag point positions for 1
+    [
+        { x: config.width / 4.2, y: config.height / 3 },
+        { x: config.width / 4.2, y: config.height / 1.3 }
+    ], // Drag point positions for 2
     [
         { x: config.width / 4, y: config.height / 5 },
-        { x: config.width / 4, y: config.height / 5 },
-        { x: config.width / 4.4, y: config.height / 2.0 }
-    ], // Drag point positions for letter B
+        { x: config.width / 2.5, y: config.height / 2.0 }
+    ], // Drag point positions for 3
     [
-        { x: config.width / 1.3, y: config.height / 3 }
-    ], // Drag point positions for letter C
+        {x: config.width / 1.6, y: config.height / 5},
+        {x: config.width / 1.6, y: config.height / 5},
+        { x: config.width / 4.2, y: config.height / 1.5 }
+    ], // Drag point positions for 4
+    [
+        {x: config.width / 1.4, y: config.height / 4.8},
+        {x: config.width / 3.5, y: config.height / 5},
+        { x: config.width / 3.8, y: config.height / 2 }
+    ], // Drag point positions for 5
+    [
+        { x: config.width / 2, y: config.height / 4.8 }
+    ], // Drag point positions for 6
+    [
+        { x: config.width / 4.2, y: config.height / 4.8 },
+        {x: config.width / 1.3, y: config.height / 4.8}
+    ], // Drag point positions for letter 7
+    [
+        { x: config.width / 1.8, y: config.height / 4.8 }
+    ], // Drag point positions for 8
+    [
+        {x: config.width / 1.6, y: config.height / 5},
+        {x: config.width / 1.6, y: config.height / 5}
+    ], // Drag point positions for 9
 
-    // Add more arrays of positions for other letters as needed
 ];
-    // Add more positions as needed];
+   
 
 let currentDragPointIndex = -1;
 
